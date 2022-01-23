@@ -35,6 +35,10 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P0
     def test_add1(self):
+        """
+        【正向】2个整数相加，结果计算正确
+        :return:
+        """
         # 测试相加方法
         # 实例化
         # calc = Calculator()
@@ -46,6 +50,10 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P0
     def test_add2(self):
+        """
+        【正向】2个浮点数相加，结果计算正确
+        :return:
+        """
         # calc = Calculator()
         result = self.calc.add(-0.01, 0.02)
         assert 0.01 == result
@@ -53,6 +61,10 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P0
     def test_add3(self):
+        """
+        【正向】整数与浮点数相加，结果计算正确
+        :return: 
+        """
         # calc = Calculator()
         result = self.calc.add(10, 0.02)
         assert 10.02 == result
@@ -60,6 +72,10 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P1
     def test_add4(self):
+        """
+        【边界】有效边界值相加，结果计算正确
+        :return:
+        """
         # calc = Calculator()
         result = self.calc.add(98.99, 99)
         assert 197.99 == result
@@ -67,6 +83,10 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P1
     def test_add5(self):
+        """
+        【边界】有效边界值相加，结果计算正确
+        :return:
+        """
         # calc = Calculator()
         result = self.calc.add(99, 98.99)
         assert 197.99 == result
@@ -74,6 +94,10 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P1
     def test_add6(self):
+        """
+        【边界】有效边界值相加，结果计算正确
+        :return:
+        """
         # calc = Calculator()
         result = self.calc.add(-98.99, -99)
         assert -197.99 == result
@@ -81,6 +105,88 @@ class TestCalc:
     @pytest.mark.add
     @pytest.mark.P1
     def test_add7(self):
+        """
+        【边界】有效边界值相加，结果计算正确
+        :return:
+        """
         # calc = Calculator()
         result = self.calc.add(-99, -98.99)
         assert -197.99 == result
+
+    @pytest.mark.add
+    @pytest.mark.P1
+    def test_add8(self):
+        """
+        【边界】无效边界值相加，给出提示信息
+        :return:
+        """
+        result = self.calc.add(99.01, 0)
+        # 断言
+        assert "参数大小超出范围" == result
+
+    @pytest.mark.add
+    @pytest.mark.P1
+    def test_add9(self):
+        """
+        【边界】无效边界值相加，给出提示信息
+        :return:
+        """
+        result = self.calc.add(-99.01, -1)
+        # 断言
+        assert "参数大小超出范围" == result
+
+    @pytest.mark.add
+    @pytest.mark.P1
+    def test_add10(self):
+        """
+        【边界】无效边界值相加，给出提示信息
+        :return:
+        """
+        result = self.calc.add(2, 99.01)
+        # 断言
+        assert "参数大小超出范围" == result
+
+    @pytest.mark.add
+    @pytest.mark.P1
+    def test_add11(self):
+        """
+        【边界】无效边界值相加，给出提示信息
+        :return:
+        """
+        result = self.calc.add(1, -99.01)
+        # 断言
+        assert "参数大小超出范围" == result
+
+    @pytest.mark.add
+    @pytest.mark.P1
+    def test_add12(self):
+        """
+        【类型】输入中文，给出提示信息
+        :return:
+        """
+        # result = self.calc.add("文", 9.3)
+        # try: except:  会捕获所有的异常
+        # 如果说想指定某个类型的异常，需要指定这个异常类型
+        # try:
+        #     result = self.calc.add("文", 9.3)
+        # except TypeError:
+        #     print("输入中文，捕获异常")
+        with pytest.raises(TypeError):
+            result = self.calc.add("文", 9.3)
+
+    @pytest.mark.add
+    @pytest.mark.P1
+    def test_add13(self):
+        """
+        【类型】输入中文，给出提示信息
+        :return:
+        """
+        # result = self.calc.add("文", 9.3)
+        # try: except:  会捕获所有的异常
+        # 如果说想指定某个类型的异常，需要指定这个异常类型
+        # try:
+        #     result = self.calc.add("文", 9.3)
+        # except TypeError:
+        #     print("输入中文，捕获异常")
+        with pytest.raises(TypeError):
+            result = self.calc.add(4, "字")
