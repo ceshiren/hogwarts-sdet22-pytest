@@ -49,7 +49,7 @@ class TestCalc:
 
     @pytest.mark.add
     @pytest.mark.P0
-    def test_add2(self):
+    def test_add2(self, demo):
         """
         【正向】2个浮点数相加，结果计算正确
         :return:

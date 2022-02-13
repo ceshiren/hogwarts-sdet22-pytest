@@ -2,6 +2,7 @@
 __author__ = '霍格沃兹测试开发学社'
 __desc__ = '更多测试开发技术探讨，请访问：https://ceshiren.com/t/topic/15860'
 """
+import pytest
 
 
 def pytest_collection_modifyitems(items):
@@ -12,3 +13,8 @@ def pytest_collection_modifyitems(items):
     for item in items:
         item.name = item.name.encode("utf-8").decode("unicode_escape")
         item._nodeid = item.nodeid.encode("utf-8").decode("unicode_escape")
+
+
+@pytest.fixture()
+def demo():
+    print("deo")
